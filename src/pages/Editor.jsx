@@ -117,11 +117,11 @@ const EditorPage = () => {
     <div className="main-wrap flex h-screen">
       <div className="aside flex items-start flex-col justify-between w-[16%]">
         <div className="asideInner w-full">
-          <div className="logo flex items-end">
-            <img className="logoImage" src="/icons8-code-48.png" alt="logo" />
-            <span className="size-7 font-extrabold">CodeCollab<span className="text-green-400">.</span>io</span>
+          <div className="logo flex items-end gap-3">
+            <img className="logoImage w-10 h-10 rounded-md" src="/code_collab.webp" alt="logo" />
+            <span className="size-7 font-extrabold tracking-tighter">CodeCollab<span className="text-green-400">.</span>io</span>
           </div>
-          <h3 className="pt-3">Connected -{`>`}</h3>
+          <h3 className="pt-3 tracking-tighter">Connected</h3>
           <div className="clientsList pt-2  overflow-auto max-h-[30rem]">
             {clients.map((val, ind) => {
               return (

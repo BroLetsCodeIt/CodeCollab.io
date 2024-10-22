@@ -8,8 +8,8 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "server:prod" : "node server.js",
-    "server:dev" : "nodemon server.js"
+    "server:prod": "node server.js",
+    "server:dev": "nodemon server.js"
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.2",
@@ -27,6 +27,7 @@
     "@uiw/react-codemirror": "^4.23.0",
     "codemirror": "^5.65.18",
     "express": "^4.19.2",
+    "lucide-react": "^0.453.0",
     "react": "^18.3.1",
     "react-avatar": "^5.0.3",
     "react-dom": "^18.3.1",

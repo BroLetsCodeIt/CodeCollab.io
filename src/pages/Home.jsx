@@ -39,8 +39,8 @@ const Home = () => {
         <div className="homePageWrapper">
             <div className="formWrapper text-sm">
                 <img
-                    className="homePageLogo"
-                    src="/icons8-code-48.png"
+                    className="homePageLogo rounded-md"
+                    src="/code_collab.webp"
                     alt="code-sync-logo"
                 />
                 <h4 className="mainLabel">Paste invitation ROOM ID</h4>
