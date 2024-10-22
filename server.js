@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import express from 'express';
 
 import dotenv from 'dotenv';
@@ -11,6 +13,13 @@ import { ACTIONS } from './src/Action.js';
 import { Server } from 'socket.io';
 import { createServer } from 'http';
 import path from 'path';
+import {dirname} from 'path';
+import { fileURLToPath } from 'url';
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 
 const server = createServer(app);
 
@@ -19,12 +28,12 @@ const io = new Server(server); // io is the instance listening for the clients t
 const userSocketMap = {}
 
 
-app.use(express.static('build')); // this will serve build/index.html page from the server side . [not from client side]
+app.use(express.static('dist')); // this will serve build/index.html page from the server side . [not from client side]
 
 app.use((req, res, next) =>{
-   res.sendFile(path.join(__dirname,'build', 'index.html'))
+   res.sendFile(path.join(__dirname,'dist', 'index.html'))
 })
-
+// console.log(__dirname);
 function getAllConnectedClients(roomId){
    console.log("called") 
    // Array.from return the Array 
