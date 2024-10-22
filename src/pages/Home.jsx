@@ -8,6 +8,7 @@ const Home = () => {
 
     const [roomId, setRoomId] = useState('');
     const [username, setUsername] = useState('');
+
     const createNewRoom = (e) => {
         e.preventDefault();
         const id = uuidV4();
@@ -51,6 +52,7 @@ const Home = () => {
                         onChange={(e) => setRoomId(e.target.value)}
                         value={roomId}
                         onKeyUp={handleInputEnter}
+                        required
                 
                     />
                     <input
@@ -60,6 +62,7 @@ const Home = () => {
                         onChange={(e) => setUsername(e.target.value)}
                         value={username}
                         onKeyUp={handleInputEnter}
+                        required
                     />
                     <button className="btn joinBtn" onClick={joinRoom}>
                         Join

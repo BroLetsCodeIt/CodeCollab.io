@@ -7,10 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server:prod" : "node server.js",
+    "server:dev" : "nodemon server.js"
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.2",
+    "@codemirror/language": "^6.10.3",
+    "@codemirror/view": "^6.34.1",
     "@uiw/codemirror-theme-androidstudio": "^4.23.0",
     "@uiw/codemirror-theme-aura": "^4.23.0",
     "@uiw/codemirror-theme-darcula": "^4.23.0",
@@ -21,6 +25,7 @@
     "@uiw/codemirror-theme-sublime": "^4.23.0",
     "@uiw/codemirror-theme-vscode": "^4.23.0",
     "@uiw/react-codemirror": "^4.23.0",
+    "codemirror": "^5.65.18",
     "express": "^4.19.2",
     "react": "^18.3.1",
     "react-avatar": "^5.0.3",

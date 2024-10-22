@@ -15,7 +15,7 @@ import { monokai } from "@uiw/codemirror-theme-monokai";
 import { sublime } from "@uiw/codemirror-theme-sublime";
 import { vscodeDark } from "@uiw/codemirror-theme-vscode";
 import { vscodeLight } from "@uiw/codemirror-theme-vscode";
-import { useState } from "react";
+import {   useEffect, useRef, useState } from "react";
 
 // type themeProps = {
 //   okaidia : Extension,
@@ -41,11 +41,19 @@ const themes = {
   vscodeDark : vscodeDark ,
   vscodeLight : vscodeLight,
 };
-
 const CodeEditor = () => {
   const [codingvalue, setCodingValue] = useState("// Type code here");
   const [currenttheme, setCurrentTheme] = useState("okaidia");
   const [fontSize, setFontSize] = useState(16);
+
+
+  const editorRef = useRef(codingvalue);
+
+  useEffect(() => {
+ 
+      console.log(editorRef)
+  },[codingvalue])
+
 
 
 
@@ -60,9 +68,14 @@ const CodeEditor = () => {
           onChange={(e) => {
             setCurrentTheme(e.target.value);
           }}
+        
+          // defaultValue={themes.okaidia}
           value={currenttheme}
-          defaultValue={currenttheme}
+          multiple={false}  
+          
+          // defaultValue={currenttheme}
         >
+          <option value="okaidia">Okaidia</option>
           <option value="aura">Aura</option>
           <option value="dracula">Dracula</option>
           <option value="darcula">Darcula</option>
@@ -72,9 +85,7 @@ const CodeEditor = () => {
           <option value="sublime">Sublime</option>
           <option value="vscodeDark">VS Code Dark</option>
           <option value="vscodeLight">VS Code Light</option>
-          <option value="okaidia" selected>
-            Okaidia
-          </option>
+         
         </select>
         <div className="border-2 border-gray-600 px-1 gap-2 text-sm rounded-md flex items-center justify-between mb-1">
           <small>Font-Size : </small>
@@ -101,10 +112,12 @@ const CodeEditor = () => {
         </div>
       </div>
       <CodeMirror
+        
         value={codingvalue}
         extensions={[javascript({ jsx: true })]}
-        onChange={(value, _viewUpdate) => {
+        onChange={(value, viewUpdate) => {
           setCodingValue(value);
+          console.log(viewUpdate)
         }}
         theme={themes[currenttheme]}
         height="710px"

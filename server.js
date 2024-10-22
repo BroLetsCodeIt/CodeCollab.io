@@ -13,25 +13,88 @@ import { createServer } from 'http';
 
 const server = createServer(app);
 
-const io = new Server(server);
+const io = new Server(server); // io is the instance listening for the clients to connect.
 
-const userSocketMap = {
+const userSocketMap = {}
 
+
+
+
+
+function getAllConnectedClients(roomId){
+   console.log("called") 
+   // Array.from return the Array 
+   // map over the array 
+   // map returns the new array by mapping over the array values
+
+   // [...rooms] -> this is also a new way to get the array used in line 69
+
+   return  Array.from(io.sockets.adapter.rooms.get(roomId) || []).map((socketId) => {
+      return{
+         socketId , 
+         username : userSocketMap[socketId]
+      }
+   });
 }
-
-
-app.get('/', (req ,res) => {
-    res.send('done');
-})
 
 io.on('connection' , (socket) => {
     console.log('a user is conneted' , socket.id );
 
-    socket.on(ACTIONS.JOIN , (roomId , username) => {
+    socket.on(ACTIONS.JOIN , ({roomId , username}) => {
         
         userSocketMap[socket.id] = username;
         socket.join(roomId);
+
+        // get notify to all other clients that new client has joined the room 
+        const clients = getAllConnectedClients(roomId);
+
+        console.log("Clients",clients);
+
+        // getting all the clients in the room 
+        clients.forEach(({socketId}) => {
+           io.to(socketId).emit(ACTIONS.JOINED , {
+               clients , 
+               username , 
+               socketId : socket.id
+           })
+        })
+    });
+
+    socket.on(ACTIONS.CODE_CHANGE , ({roomId , code , currenttheme}) => {
+       socket.in(roomId).emit(ACTIONS.CODE_CHANGE , {
+            code,
+            currenttheme
+       })
     })
+
+    socket.on(ACTIONS.SYNC_CODE , ({code , socketId}) => {
+       io.to(socketId).emit(ACTIONS.CODE_CHANGE , {
+          code , 
+          socketId
+       })
+    })
+
+
+    // completely socket disconnect hone se phele .
+
+    // it will run when someone close the browser etc 
+    socket.on('disconnecting' , ()=>{
+
+        const rooms = [...socket.rooms];
+
+        rooms.forEach((roomId) => {
+             socket.in(roomId).emit(ACTIONS.DISCONNECTED , {
+                socketId : socket.id , 
+                username : userSocketMap[socket.id]
+             })
+        })
+
+        delete userSocketMap[socket.id];
+        socket.leave();
+    })
+
+    // there is disconnect method also which can be used when user is disconnected;
+
 })
 
 
