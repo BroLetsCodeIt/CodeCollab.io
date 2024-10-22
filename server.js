@@ -16,6 +16,9 @@ import path from 'path';
 import {dirname} from 'path';
 import { fileURLToPath } from 'url';
 
+import cors from 'cors';
+
+app.use(cors());
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -28,12 +31,15 @@ const io = new Server(server); // io is the instance listening for the clients t
 const userSocketMap = {}
 
 
-app.use(express.static('dist')); // this will serve build/index.html page from the server side . [not from client side]
+app.use(express.static("dist")); // this will serve build/index.html page from the server side . [not from client side]
+// app.use(express.static(path.join(__dirname, 'dist' , 'index.html')));
+
 
 app.use((req, res, next) =>{
-   res.sendFile(path.join(__dirname,'dist', 'index.html'))
+   res.sendFile(path.join(__dirname,"dist", "index.html"));
 })
-// console.log(__dirname);
+
+
 function getAllConnectedClients(roomId){
    console.log("called") 
    // Array.from return the Array 

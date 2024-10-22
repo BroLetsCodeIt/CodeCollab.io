@@ -10,8 +10,8 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "server:prod": "node server.js",
-    "server:dev": "nodemon server.js",
-    "deploy": "gh-pages -d dist"
+    "server:dev": "nodemon server.js"
+   
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.2",
