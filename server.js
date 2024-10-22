@@ -10,6 +10,7 @@ const app = express();
 import { ACTIONS } from './src/Action.js';
 import { Server } from 'socket.io';
 import { createServer } from 'http';
+import path from 'path';
 
 const server = createServer(app);
 
@@ -18,8 +19,11 @@ const io = new Server(server); // io is the instance listening for the clients t
 const userSocketMap = {}
 
 
+app.use(express.static('build')); // this will serve build/index.html page from the server side . [not from client side]
 
-
+app.use((req, res, next) =>{
+   res.sendFile(path.join(__dirname,'build', 'index.html'))
+})
 
 function getAllConnectedClients(roomId){
    console.log("called") 
