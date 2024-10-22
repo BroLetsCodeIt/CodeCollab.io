@@ -23,10 +23,16 @@ app.use(cors());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+app.use(express.static(path.join(__dirname, 'dist')));
 
 const server = createServer(app);
 
-const io = new Server(server); // io is the instance listening for the clients to connect.
+const io = new Server(server , {
+   cors: {
+      origin: "https://codecollab-io.onrender.com", // Ensure correct origin
+      methods: ["GET", "POST"]
+    }
+}); // io is the instance listening for the clients to connect.
 
 const userSocketMap = {}
 

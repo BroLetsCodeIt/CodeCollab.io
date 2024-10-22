@@ -4,9 +4,9 @@ import { io } from 'socket.io-client';
 
 
 
-const URL = import.meta.env.NODE_ENV === "production" ? "https://codecollab-io.onrender.com/" : import.meta.env.VITE_APP_BACKEND_URL;
+const URL = import.meta.env.NODE_ENV === "production" ? "https://codecollab-io.onrender.com/" : "https://codecollab-io.onrender.com/";
 
-
+// import.meta.env.VITE_APP_BACKEND_URL
 
 const initSocket = async () => {
     const options  = {
