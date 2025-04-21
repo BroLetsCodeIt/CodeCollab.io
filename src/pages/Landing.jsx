@@ -1,5 +1,4 @@
 
-import { MoveUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 
@@ -8,7 +7,7 @@ const Landing = () => {
   return (
     <>
       <section className="relative bg-white">
-      <div className='fixed top-0 right-0 bg-gray-200 pl-7 pr-4 pb-10  pt-3 clip-custom-polygon z-50 '>
+      <div className='fixed top-0 right-0 bg-gray-200 pl-7 pr-4 pb-16  pt-3 clip-custom-polygon z-50 '>
         <div className='transform rotate-45 pb-2 font-bold'>
             <Link to="https://github.com/BroLetsCodeIt/CodeCollab.io" target='_blank' className='transform rotate-45 pb-2 font-bold'>
              <img src="./githublogo.png" alt="logo" className='w-10'/>
@@ -72,14 +71,14 @@ const Landing = () => {
                 </span>
               </div>
               <p className="text-wrap mx-auto mt-6 max-w-2xl text-gray-700 ">
-              CodeCollab.io is a seamless online platform designed to bring developers together. Whether you&apos;re working on a collaborative project, pair programming, or teaching, CodeCollab.io makes it easy for you to create a coding room or join one in real-time. With built-in support for multiple themes, CodeCollab.io enhances your collaborative coding experience.
+              CodeCollab.io is a seamless online platform designed to bring developers together. Whether you&apos;re working on a collaborative project, pair programming, or teaching, CodeCollab.io makes it easy for you to create a coding room & join one in real-time. With built-in support for multiple themes, CodeCollab.io enhances your collaborative coding experience.
               </p>
               <div className="mt-8 flex flex-row items-center justify-center gap-4">
-                <div className="p-1 rounded-md bg-gray-950/5 border ">
-                  <Link to={'/home'} className="bg-green-400 px-2 py-1 rounded-sm text-white text-xl font-bold tracking-tighter flex items-center justify-between gap-2 ">Create Room<MoveUpRight/></Link>
+                <div className=" shadow-sm rounded-md bg-gray-950/5 border-solid ">
+                  <Link to={'/home'} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ">Create Room</Link>
                 </div>
-                <div className="p-1 rounded-md bg-gray-950/5 border ">
-                  <Link to={'/home'} className="bg-green-400 px-2 py-1 rounded-sm text-white text-xl font-bold tracking-tighter flex items-center justify-between gap-2 ">Join Room<MoveUpRight/></Link>
+                <div className="shadow-sm rounded-md bg-gray-950/5 border-solid">
+                  <Link to={'/home'} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ">Join Room</Link>
                 </div>
               </div>
             </div>

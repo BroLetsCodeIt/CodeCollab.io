@@ -107,7 +107,7 @@ const CodeEditorNew = ({socketRef , roomId , onCodeChange}) => {
                 <select
                     name="theme"
                     id="theme"
-                    className="bg-gray-900 px-1 py-1 rounded-md mb-1 border-2 border-gray-600 text-sm"
+                    className="bg-[#252526] px-1 py-1 rounded-md mb-1  text-sm"
                     onChange={(e) => {
                         
                         setCurrentTheme(e.target.value);
@@ -135,7 +135,7 @@ const CodeEditorNew = ({socketRef , roomId , onCodeChange}) => {
 
                 </select>
 
-                <div className="border-2 border-gray-600 px-1 gap-2 text-sm rounded-md flex items-center justify-between mb-1">
+                {/* <div className="border-2 border-gray-600 px-1 gap-2 text-sm rounded-md flex items-center justify-between mb-1">
                     <small>Font-Size : </small>
                     <button
                         disabled={fontSize <= 15}
@@ -156,7 +156,7 @@ const CodeEditorNew = ({socketRef , roomId , onCodeChange}) => {
                     >
                         +
                     </button>
-                </div>
+                </div> */}
 
                 {/* <select
                     name="language"

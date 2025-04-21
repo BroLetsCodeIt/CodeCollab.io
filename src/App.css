@@ -2,14 +2,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  /* color: #fff; */
   height: 100vh;
+  background-color: rgb(203, 201, 201);
 }
 ::-webkit-scrollbar{
   display: none;
 }
 .formWrapper {
-  background: #282a36;
+  background: #ffffff;
   padding: 20px;
   border-radius: 10px;
   width: 400px;
@@ -97,14 +98,16 @@ footer a:hover {
 }
 
 .aside {
-  background: #1c1e29;
-  padding: 16px;
-  color: #fff;
+  background: #252526;
+  
+  /* color: #fff; */
   display: flex;
-  flex-direction: column;
+  direction: rtl;
+  /* flex-direction: column; */
 }
 .asideInner {
   flex: 1;
+  
 }
 
 .clientsList {

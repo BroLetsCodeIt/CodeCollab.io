@@ -12,7 +12,7 @@ const Header = () => {
                 <nav className="fixed overflow-hidden z-20 w-full bg-white/80 dark:bg-gray-950/0 dark:shadow-md rounded-b-lg dark:shadow-gray-950/10  border-x dark:border-[--ui-dark-border-color] backdrop-blur-2xl">
                     
                     <div className="px-6 m-auto max-w-6xl 2xl:px-0">
-                        <div className="flex flex-wrap items-center justify-between py-2 sm:py-4">
+                        <div className="flex flex-wrap items-center justify-around py-2 sm:py-4">
                             <div className="w-full items-center flex justify-between lg:w-auto gap-3">
                                 <a href="/" aria-label="kshamlogo">
                                     <img src="/code_collab.webp" alt="" className="w-30 h-10"  />
@@ -24,22 +24,22 @@ const Header = () => {
                                 <div className="mt-6 text-gray-600 dark:text-gray-300 md:-ml-4 lg:pr-4 lg:mt-0">
                                     <ul className="space-y-6 tracking-wide text-base lg:text-sm lg:flex lg:space-y-0">
                                         <li>
-                                            <Link to="/" className="block md:px-4 transition hover:text-primary-600 ">
+                                            <Link to="/" className="block md:px-4 transition hover:text-primary-600 text-black">
                                                 <span>Home</span>
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link to="/aboutus" className="block md:px-4 transition hover:text-primary-600 ">
+                                            <Link to="/aboutus" className="block md:px-4 transition hover:text-primary-600 text-black">
                                                 <span>About us</span>
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link to="/docs" className="block md:px-4 transition hover:text-primary-600 ">
+                                            <Link to="/docs" className="block md:px-4 transition hover:text-primary-600 text-black">
                                                 <span>Docs</span>
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link to="/contact" className="block md:px-4 transition hover:text-primary-600 ">
+                                            <Link to="/contact" className="block md:px-4 transition hover:text-primary-600 text-black">
                                                 <span>Contact us</span>
                                             </Link>
                                         </li>

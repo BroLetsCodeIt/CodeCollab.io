@@ -10,6 +10,8 @@ import toast from "react-hot-toast";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import CodeEditorNew from "../components/CodeEditorNew.jsx";
+import { Copy, LogOut, SplineIcon } from "lucide-react";
+import Loader from "../components/Loader/index.jsx";
 
 
 const EditorPage = () => {
@@ -115,15 +117,16 @@ const EditorPage = () => {
   }
   return (
     <div className="main-wrap flex h-screen">
-      <div className="aside flex items-start flex-col justify-between w-[16%]">
-        <div className="asideInner w-full">
-          <div className="logo flex items-end gap-3">
+      <div className="aside flex items-start justify-between w-[16%]">
+        <div className=" w-full flex flex-col items-end pl-2 pt-2 ">
+          {/* <div className="logo flex items-end gap-3">
             <img className="logoImage w-10 h-10 rounded-md" src="/code_collab.webp" alt="logo" />
             <span className="size-7 font-extrabold tracking-tighter">CodeCollab<span className="text-green-400">.</span>io</span>
-          </div>
-          <h3 className="pt-3 tracking-tighter">Connected</h3>
+          </div> */}
+          <h3 className=" tracking-tighter text-gray-500">Connected</h3>
           <div className="clientsList pt-2  overflow-auto max-h-[30rem]">
-            {clients.map((val, ind) => {
+            
+            {clients.length != 0 ? (clients.map((val, ind) => {
               return (
                 <div
                   className=" text-black rounded-md flex flex-col items-center"
@@ -133,23 +136,29 @@ const EditorPage = () => {
                   <small className="text-white">{val.username}</small>
                 </div>
               );
-            })}
+            })) : (
+               <Loader/>
+            )
+          }
           </div>
         </div>
-        <div className=" w-full">
-          <button className="btn copyBtn bg-white w-full text-black text-sm py-2" onClick={CopytoClipBoard}>Copy ROOM ID</button>
+        <div className=" h-screen bg-[#3C3C3C] flex flex-col justify-end w-fit">
+          <button className="btn copyBtn   text-gray-400 text-sm py-2 w-fit" onClick={CopytoClipBoard} title="Copy Room Id">
+            <Copy/>
+          </button>
           <button
-            className="btn leaveBtn text-sm w-full py-2"
+            className="btn  w-fit text-gray-400 text-sm  py-2"
             onClick={() => {
               onLeave();
             }}
+            title="Exit"
           >
-            Leave
+            <LogOut/>
           </button>
         </div>
       </div>
 
-      <div className="editorwrap text-white flex-1 p-2 border-l-2 border-gray-600 w-full h-screen overflow-auto">
+      <div className="editorwrap text-white flex-1  border-l-2 border-gray-600 w-full h-screen overflow-auto bg-[#252526]">
         <CodeEditorNew socketRef={socketRef} roomId = {params.roomId} onCodeChange={(code)=> { codeRef.current  = code}}/>
       </div>
     </div>
